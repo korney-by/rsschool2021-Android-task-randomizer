@@ -18,35 +18,40 @@
         tools:text="Previous result: 4" />
 
     <EditText
-        android:id="@+id/min_value"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:hint="Min"
-        android:inputType="number"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/previous_result" />
-
-    <EditText
         android:id="@+id/max_value"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:hint="Max"
         android:inputType="number"
         android:textSize="20sp"
+        android:maxLength="9"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/min_value" />
+
+    <EditText
+        android:id="@+id/min_value"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:hint="Min"
+        android:inputType="number"
+        android:textSize="20sp"
+        android:maxLength="9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/previous_result" />
 
     <Button
         android:id="@+id/generate"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="92dp"
         android:text="Generate"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/max_value" />
 
