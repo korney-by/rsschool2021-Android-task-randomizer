@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">randomizer</string>
+    <string name="messageMaxMoreMin">Value MAX must be more then MIN.</string>
+    <string name="messageInputMin">Input value MIN, please.</string>
+    <string name="messageInputMax">Input value MAX, please.</string>
+    <string name="messageInputMinMax">Input values MIN and MAX, please.</string>
+
 </resources>

@@ -1,15 +1,12 @@
 package com.rsschool.android2021
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.TextView.OnEditorActionListener
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 
@@ -59,25 +56,27 @@ class FirstFragment : Fragment() {
     }
 
     fun isValuesGood(min: Int, max: Int): Boolean {
-        return (min < max) && (min_value?.text.toString().length>0);
+        return (min < max) && (min_value?.text.toString().length > 0);
     }
 
     fun getMessageBadValues(min: Int, max: Int): String {
-        var valueNames: String=""
+        val min_length = min_value?.text.toString().length
+        val max_length = max_value?.text.toString().length
 
-        if (min_value?.text.toString().length == 0) {
-            valueNames = " MIN"
+        if (min_length == 0 && max_length == 0) {
+            return getString(R.string.messageInputMinMax)
         }
-        if (max_value?.text.toString().length == 0) {
-            if (valueNames.length > 0) {
-                valueNames = "s$valueNames and "
-            }
-            valueNames = "$valueNames MAX"
+
+        if (min_length == 0) {
+            return getString(R.string.messageInputMin)
         }
-        if (valueNames.length > 0) {
-            return "Input value$valueNames, please."
-        } else if (min >= max) {
-            return "Value MAX must be more then MIN."
+
+        if (max_length == 0) {
+            return getString(R.string.messageInputMax)
+        }
+
+        if (min >= max) {
+            return getString(R.string.messageMaxMoreMin)
         }
         return ""
     }
