@@ -1,14 +1,10 @@
 package com.rsschool.android2021;
 
 
-import android.app.Activity;
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -47,10 +43,10 @@ public class MainActivity extends AppCompatActivity implements ShowFragments {
 
     @Override
     public void onBackPressed() {
-        Button buttonBack = (Button)findViewById(R.id.back);
-        if (buttonBack==null) {
+        Button buttonBack = (Button) findViewById(R.id.back);
+        if (buttonBack == null) {
             super.onBackPressed();
-        }else{
+        } else {
             buttonBack.callOnClick();
         }
     }

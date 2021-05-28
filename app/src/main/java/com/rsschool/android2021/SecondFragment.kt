@@ -1,5 +1,6 @@
 package com.rsschool.android2021
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,7 +14,7 @@ class SecondFragment : Fragment() {
 
     private var backButton: Button? = null
     private var result: TextView? = null
-    private lateinit var mainActivity: MainActivity
+    private lateinit var showFragments: ShowFragments
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,7 +28,6 @@ class SecondFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         result = view.findViewById(R.id.result)
         backButton = view.findViewById(R.id.back)
-        mainActivity = getActivity() as MainActivity
 
         val min = arguments?.getInt(MIN_VALUE_KEY) ?: 0
         val max = arguments?.getInt(MAX_VALUE_KEY) ?: 0
@@ -35,7 +35,7 @@ class SecondFragment : Fragment() {
         result?.text = generate(min, max).toString()
 
         backButton?.setOnClickListener {
-            mainActivity.showFirstFragment(Utils.getInt(result))
+            showFragments.showFirstFragment(Utils.getInt(result))
         }
     }
 
@@ -43,17 +43,26 @@ class SecondFragment : Fragment() {
         return Random.nextInt(min, max)
     }
 
-    companion object {
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is ShowFragments) {
+            showFragments = context as ShowFragments
+        } else {
+            throw  RuntimeException(context.toString() + " must implement ShowFragments");
+        }
+    }
 
+
+    companion object {
         @JvmStatic
         fun newInstance(min: Int, max: Int): SecondFragment {
             val fragment = SecondFragment()
             val args = Bundle()
 
             // TODO: implement adding arguments
-            args.putInt(MIN_VALUE_KEY,min)
-            args.putInt(MAX_VALUE_KEY,max)
-            fragment.arguments=args
+            args.putInt(MIN_VALUE_KEY, min)
+            args.putInt(MAX_VALUE_KEY, max)
+            fragment.arguments = args
 
             return fragment
         }

@@ -1,5 +1,6 @@
 package com.rsschool.android2021
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,8 +18,7 @@ class FirstFragment : Fragment() {
     private var previousResult: TextView? = null
     private var min_value: EditText? = null
     private var max_value: EditText? = null
-    private lateinit var mainActivity: MainActivity
-
+    private lateinit var showFragments: ShowFragments
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,8 +34,7 @@ class FirstFragment : Fragment() {
         generateButton = view.findViewById(R.id.generate)
         min_value = view.findViewById(R.id.min_value)
         max_value = view.findViewById(R.id.max_value)
-        mainActivity = getActivity() as MainActivity
-        //generateButton.post(generateButton.visibility = View.GONE )
+
 
         val result = arguments?.getInt(PREVIOUS_RESULT_KEY)
         previousResult?.text = "Previous result: ${result.toString()}"
@@ -44,14 +43,21 @@ class FirstFragment : Fragment() {
             val min = Utils.getInt(min_value)
             val max = Utils.getInt(max_value)
 
-
             if (isValuesGood(min, max)) {
-                mainActivity.showSecondFragment(min, max)
+                showFragments?.showSecondFragment(min, max)
             } else {
-                Toast.makeText(mainActivity, getMessageBadValues(min, max), Toast.LENGTH_SHORT)
+                Toast.makeText(context, getMessageBadValues(min, max), Toast.LENGTH_SHORT)
                     .show()
-
             }
+        }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is ShowFragments) {
+            showFragments = context as ShowFragments
+        } else {
+            throw  RuntimeException(context.toString() + " must implement ShowFragments");
         }
     }
 
