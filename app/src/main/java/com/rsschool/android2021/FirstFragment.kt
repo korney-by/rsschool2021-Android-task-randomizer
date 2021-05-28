@@ -41,8 +41,6 @@ class FirstFragment: Fragment() {
         previousResult?.text = getString(R.string.previous_result,result.toString())
 
 
-
-        
         generateButton?.setOnClickListener {
             val min = Utils.getInt(minEditText)
             val max = Utils.getInt(maxEditText)
