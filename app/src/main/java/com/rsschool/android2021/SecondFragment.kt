@@ -46,9 +46,9 @@ class SecondFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is ShowFragments) {
-            showFragments = context as ShowFragments
+            showFragments = context //as ShowFragments
         } else {
-            throw  RuntimeException(context.toString() + " must implement ShowFragments");
+            throw  RuntimeException("$context must implement ShowFragments")
         }
     }
 

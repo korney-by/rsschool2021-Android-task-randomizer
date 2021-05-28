@@ -44,7 +44,7 @@ class FirstFragment : Fragment() {
             val max = Utils.getInt(max_value)
 
             if (isValuesGood(min, max)) {
-                showFragments?.showSecondFragment(min, max)
+                showFragments.showSecondFragment(min, max)
             } else {
                 Toast.makeText(context, getMessageBadValues(min, max), Toast.LENGTH_SHORT)
                     .show()
@@ -55,14 +55,14 @@ class FirstFragment : Fragment() {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is ShowFragments) {
-            showFragments = context as ShowFragments
+            showFragments = context //as ShowFragments
         } else {
-            throw  RuntimeException(context.toString() + " must implement ShowFragments");
+            throw  RuntimeException("$context must implement ShowFragments")
         }
     }
 
     fun isValuesGood(min: Int, max: Int): Boolean {
-        return (min < max) && (min_value?.text.toString().length > 0);
+        return (min < max) && (min_value?.text.toString().length > 0)
     }
 
     fun getMessageBadValues(min: Int, max: Int): String {

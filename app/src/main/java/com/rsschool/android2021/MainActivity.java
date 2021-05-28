@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements ShowFragments {
 
     @Override
     public void onBackPressed() {
-        Button buttonBack = (Button) findViewById(R.id.back);
+        Button buttonBack = findViewById(R.id.back);
         if (buttonBack == null) {
             super.onBackPressed();
         } else {
