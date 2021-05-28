@@ -1,5 +1,6 @@
 package com.rsschool.android2021
 
+
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,12 +13,12 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 
 
-class FirstFragment : Fragment() {
+class FirstFragment: Fragment() {
 
     private var generateButton: Button? = null
     private var previousResult: TextView? = null
-    private var min_value: EditText? = null
-    private var max_value: EditText? = null
+    private var minEditText: EditText? = null
+    private var maxEditText: EditText? = null
     private lateinit var showFragments: ShowFragments
 
     override fun onCreateView(
@@ -32,16 +33,19 @@ class FirstFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         previousResult = view.findViewById(R.id.previous_result)
         generateButton = view.findViewById(R.id.generate)
-        min_value = view.findViewById(R.id.min_value)
-        max_value = view.findViewById(R.id.max_value)
+        minEditText = view.findViewById(R.id.min_value)
+        maxEditText = view.findViewById(R.id.max_value)
 
 
         val result = arguments?.getInt(PREVIOUS_RESULT_KEY)
-        previousResult?.text = "Previous result: ${result.toString()}"
+        previousResult?.text = getString(R.string.previous_result,result.toString())
 
+
+
+        
         generateButton?.setOnClickListener {
-            val min = Utils.getInt(min_value)
-            val max = Utils.getInt(max_value)
+            val min = Utils.getInt(minEditText)
+            val max = Utils.getInt(maxEditText)
 
             if (isValuesGood(min, max)) {
                 showFragments.showSecondFragment(min, max)
@@ -57,27 +61,28 @@ class FirstFragment : Fragment() {
         if (context is ShowFragments) {
             showFragments = context //as ShowFragments
         } else {
-            throw  RuntimeException("$context must implement ShowFragments")
+            throw  RuntimeException(getString(R.string.ex_implements_showfragment,context))
         }
     }
 
-    fun isValuesGood(min: Int, max: Int): Boolean {
-        return (min < max) && (min_value?.text.toString().length > 0)
+    private fun isValuesGood(min: Int, max: Int): Boolean {
+        //return (min < max) && (minEditText?.text.toString().length > 0)
+        return (min < max) && (minEditText?.text.toString().isNotEmpty())
     }
 
-    fun getMessageBadValues(min: Int, max: Int): String {
-        val min_length = min_value?.text.toString().length
-        val max_length = max_value?.text.toString().length
+    private fun getMessageBadValues(min: Int, max: Int): String {
+        val minLength = minEditText?.text.toString().length
+        val maxLength = maxEditText?.text.toString().length
 
-        if (min_length == 0 && max_length == 0) {
+        if (minLength == 0 && maxLength == 0) {
             return getString(R.string.messageInputMinMax)
         }
 
-        if (min_length == 0) {
+        if (minLength == 0) {
             return getString(R.string.messageInputMin)
         }
 
-        if (max_length == 0) {
+        if (maxLength == 0) {
             return getString(R.string.messageInputMax)
         }
 

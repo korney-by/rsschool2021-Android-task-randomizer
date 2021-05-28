@@ -48,7 +48,7 @@ class SecondFragment : Fragment() {
         if (context is ShowFragments) {
             showFragments = context //as ShowFragments
         } else {
-            throw  RuntimeException("$context must implement ShowFragments")
+            throw  RuntimeException(getString(R.string.ex_implements_showfragment,context))
         }
     }
 

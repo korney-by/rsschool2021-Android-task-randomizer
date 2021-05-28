@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="messageMaxMoreMin">Максимальное число должно быть больше минимального</string>
+    <string name="messageInputMin">Введите Минимальное число</string>
+    <string name="messageInputMax">Введите Максимальное число</string>
+    <string name="messageInputMinMax">Введите Минимальное и Максимальное числа</string>
+    <string name="previous_result">Предыдущий результат: %1$s</string>
+    <string name="min" translatable="false">Минимальное</string>
+    <string name="max" translatable="false">Максимальное</string>
+    <string name="generate">Сгенерировать</string>
+    <string name="result">Result:</string>
+    <string name="result">Результат:</string>
+    <string name="back">Назад</string>
+</resources>

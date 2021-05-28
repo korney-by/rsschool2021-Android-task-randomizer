@@ -1,8 +1,16 @@
 <resources>
-    <string name="app_name">randomizer</string>
-    <string name="messageMaxMoreMin">Value MAX must be more then MIN.</string>
-    <string name="messageInputMin">Input value MIN, please.</string>
-    <string name="messageInputMax">Input value MAX, please.</string>
-    <string name="messageInputMinMax">Input values MIN and MAX, please.</string>
+    <string name="app_name" translatable="false">Randomizer</string>
+    <string name="messageMaxMoreMin">Value MAX must be more then MIN</string>
+    <string name="messageInputMin">Input value MIN, please</string>
+    <string name="messageInputMax">Input value MAX, please</string>
+    <string name="messageInputMinMax">Input values MIN and MAX, please</string>
+    <string name="previous_result">Previous result: %1$s</string>
+    <string name="min">MIN</string>
+    <string name="max">MAX</string>
+
+    <string name="ex_implements_showfragment" translatable="false">%1$s must implement ShowFragments</string>
+    <string name="generate">Generate</string>
+    <string name="result">Result:</string>
+    <string name="back">Back</string>
 
 </resources>
