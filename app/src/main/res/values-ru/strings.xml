@@ -8,7 +8,6 @@
     <string name="min" translatable="false">Минимальное</string>
     <string name="max" translatable="false">Максимальное</string>
     <string name="generate">Сгенерировать</string>
-    <string name="result">Result:</string>
     <string name="result">Результат:</string>
     <string name="back">Назад</string>
 </resources>
