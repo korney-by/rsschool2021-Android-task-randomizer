@@ -13,7 +13,7 @@ class SecondFragment : Fragment() {
 
     private var backButton: Button? = null
     private var result: TextView? = null
-    private lateinit var showFragments: ShowFragments
+    private lateinit var showFragmentsInterface: ShowFragmentsInterface
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,7 +34,7 @@ class SecondFragment : Fragment() {
         result?.text = generate(min, max).toString()
 
         backButton?.setOnClickListener {
-            showFragments.showFirstFragment(Utils.getIntUnsigned(result))
+            showFragmentsInterface.showFirstFragment(Utils.getIntUnsigned(result))
         }
     }
 
@@ -44,8 +44,8 @@ class SecondFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is ShowFragments) {
-            showFragments = context //as ShowFragments
+        if (context is ShowFragmentsInterface) {
+            showFragmentsInterface = context //as ShowFragments
         } else {
             throw  RuntimeException(getString(R.string.ex_implements_showfragment,context))
         }

@@ -21,7 +21,7 @@ class FirstFragment : Fragment() {
     private var previousResult: TextView? = null
     private var minEditText: EditText? = null
     private var maxEditText: EditText? = null
-    private lateinit var showFragments: ShowFragments
+    private lateinit var showFragmentsInterface: ShowFragmentsInterface
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,7 +47,7 @@ class FirstFragment : Fragment() {
             val min = Utils.getIntUnsigned(minEditText)
             val max = Utils.getIntUnsigned(maxEditText)
             if (isValueGood(min, max)) {
-                showFragments.showSecondFragment(min, max)
+                showFragmentsInterface.showSecondFragment(min, max)
             } else {
                 showToast(getMessageBadValues(min, max),previousResult?.top as Int-5)
             }
@@ -65,8 +65,8 @@ class FirstFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if (context is ShowFragments) {
-            showFragments = context //as ShowFragments
+        if (context is ShowFragmentsInterface) {
+            showFragmentsInterface = context //as ShowFragments
         } else {
             throw  RuntimeException(getString(R.string.ex_implements_showfragment, context))
         }
