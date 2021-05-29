@@ -5,9 +5,10 @@
     <string name="messageInputMax">Введите Максимальное число</string>
     <string name="messageInputMinMax">Введите Минимальное и Максимальное числа</string>
     <string name="previous_result">Предыдущий результат: %1$s</string>
-    <string name="min" translatable="false">Минимальное</string>
-    <string name="max" translatable="false">Максимальное</string>
+    <string name="min_value" translatable="false">Минимальное</string>
+    <string name="max_value" translatable="false">Максимальное</string>
     <string name="generate">Сгенерировать</string>
     <string name="result">Результат:</string>
     <string name="back">Назад</string>
+    <string name="messageValueMoreMAXINT">%1$s значение не может быть больше %2$d</string>
 </resources>

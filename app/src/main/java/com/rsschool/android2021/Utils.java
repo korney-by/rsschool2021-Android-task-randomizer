@@ -5,24 +5,36 @@ import android.widget.TextView;
 
 public class Utils {
 
-    public static int getInt(EditText editText) {
+    public static int getIntUnsigned(EditText editText) {
         if (editText != null) {
             String value = editText.getText().toString();
-            return strToInt(value);
+            return strToIntUnsigned(value);
         }
         return 0;
     }
 
-    public static int getInt(TextView textView) {
+
+    public static int getIntUnsigned(TextView textView) {
         if (textView != null) {
             String value = textView.getText().toString();
-            return strToInt(value);
+            return strToIntUnsigned(value);
         }
         return 0;
     }
 
-    private static int strToInt(String value){
-        return value.length() > 0 ? Integer.parseInt(value) : 0;
+    private static int strToIntUnsigned(String value) {
+        // return 0 iа value=""
+        // return -1 if value > MAX_INT
+        if (!value.isEmpty()) {
+            long valueLong = Long.parseLong(value);
+            if (valueLong <= Integer.MAX_VALUE) {
+                return (int) valueLong;
+            } else {
+                return -1;
+            }
+
+        }
+        return 0;
     }
 
 }

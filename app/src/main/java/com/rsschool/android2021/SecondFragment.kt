@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import kotlin.random.Random
 
 class SecondFragment : Fragment() {
 
@@ -35,12 +34,12 @@ class SecondFragment : Fragment() {
         result?.text = generate(min, max).toString()
 
         backButton?.setOnClickListener {
-            showFragments.showFirstFragment(Utils.getInt(result))
+            showFragments.showFirstFragment(Utils.getIntUnsigned(result))
         }
     }
 
     private fun generate(min: Int, max: Int): Int {
-        return Random.nextInt(min, max)
+        return (min..max).random()
     }
 
     override fun onAttach(context: Context) {
